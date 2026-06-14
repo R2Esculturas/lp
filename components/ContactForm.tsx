@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 const ContactForm: React.FC = () => {
@@ -35,6 +34,11 @@ const ContactForm: React.FC = () => {
 
     if (formData.email) {
       text += `\n\nMeu contato de email: ${formData.email}`;
+    }
+
+    // Dispara evento de Lead para o Meta Pixel (otimização de campanha)
+    if (typeof (window as any).fbq === 'function') {
+      (window as any).fbq('track', 'Lead');
     }
 
     // Codifica para URL e redireciona
